@@ -13,4 +13,18 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 | **Matric** | **Business Value** |
 | :--- | :--- |
 | **Machine Utilization %** | Identified whether machines are sitting idle or are critically overworked by dividing Scheduled Hours by Active Daily Capacity. |
-| **Production Status** | Dynamically 
+| **Production Status** | Dynamically classifies every order 'On Time', 'Delayed', 'In Progress' |
+| **Material Workload (Hours)** | Translates raw order quantities into actual production hours required per material to aid supply chain purchasing. |
+| **Total Delayed Jobs** | Provides an aggregate count of missed deadline across the manufacturing floor. |
+
+## Executive Dashboard
+
+* **Forgeline Navy (#1E3A5F):** Used for primary, positive data points.
+* **Steel Gray (#4B5563): Used for secondary categories and neutral labels.
+* **Forge Orange (#E85D04):** Reserved exclusively as an "alert" color to draw attention to delayed jobs and bottlenecks.
+
+## Dashboard Features and Key Business Insights
+* **Machine Scheduling Heatmap (Matrix):** Visally exposed overebooked equipment by using conditional formatting to highlight days where scheduled hours exceed physical machine capacity.
+* **Bottleneck Analysis (Clusted Bar Chart):** Breaks down Total Delayed Jobs by specific Machine Types, instantly showing if spcific equipment (e.g. CNC Lathes) iscuasing cascading delays.
+* **Resource Demand (Treemap):** Highlights the Material Workload Hours, demonstratiing which raw materials are consumuing the majority of total machine time.
+* **Interactive Global Slicers:** Allows floor managers to slice the data instantly by Date, Machine type, or Product Name.
