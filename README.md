@@ -20,7 +20,7 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 ## Executive Dashboard
 
 * **Forgeline Navy (#1E3A5F):** Used for primary, positive data points.
-* **Steel Gray (#4B5563): Used for secondary categories and neutral labels.
+* **Steel Gray (#4B5563):** Used for secondary categories and neutral labels.
 * **Forge Orange (#E85D04):** Reserved exclusively as an "alert" color to draw attention to delayed jobs and bottlenecks.
 
 ## Dashboard Features and Key Business Insights
