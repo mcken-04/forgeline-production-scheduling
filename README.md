@@ -4,7 +4,7 @@
 Forgeline Industries currently lacks real time visibility into the root causes of operational bottlenecks across its manufacturing floor. This project implements an automated, end-to-end pipeline and business intelligence dashboard to identify physical manufacturing delays and track machine utilization. By transitioning from scattered monthly batch files to a centralized command center, operations managers can now proactively monitor capacity limits, prevent scheduling cascades, and maintain customer delivery timelines.
 
 ## Methodology & Tech Stacks
-* **Data Generation (Python):** Simulated 5,000 synthetic , intentionally messy manufacturing orders using the `pandas` library, utilizing a locked random seed (42) to ensure strict reproductibility.
+* **Data Generation (Python):** Simulated 5,000 synthetic , intentionally messy manufacturing orders using the `pandas` library, utilizing a locked random seed (42) to ensure strict reproducibility.
 * **Automated ETL Pipeline (Excel / Power Query):** Established a "dropo and refresh" folder connection to automatically append monthly CSV/Excel batch files. Engineered tranformation steps to standardize mixed date formats, unify text casing, trim hidden whitespaces from Machine IDs, and impute missing quantities.
 * **Data Modeling (Power BI):** Constructed a Star Schema featuring a dynamic `CALENDERAUTO()` Date table to properly handle time intelligence filtering.
 * **Advacned DAX Logic:** Deployed robust measures using variables `(VAR)`, `MAX`, and `LOOKUPVALUE` to bypass inactive relationships and handle dupicate Order IDs without breaking the visualizations.
@@ -34,4 +34,11 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 * **Proactive Overtime:** Authorize targeted weekend overtime shifts for specific machine operators when scheduled hours vastly exceed the active daily capacity to prevent missed customer deadlines.
 * **Customer Communication:** Contact customers regarding orders flagged in the 'Delayed' status before the missed deadline occurs.
 
- 
+## Repository Structure
+
+
+# Future Enhancements
+* ** Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order genration.
+* **Predictive Maintenance Forcast:** Implement a predictive Machine Lerning model with Pythion to forcast the probability of machine downtime based on Scheduled Hours and Active Daily Capacity.
+* **Operator Shift Drilldown:** Further analyze machine operator shifts to observe correlations to delayed production statuses.
+* **Material Supply Chain Exploration:** Study vendor lead times and material costs for key compenents like Titanium Alloy and Corbon Steel to determine optimal purchasing schedules.
