@@ -28,3 +28,10 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 * **Bottleneck Analysis (Clusted Bar Chart):** Breaks down Total Delayed Jobs by specific Machine Types, instantly showing if spcific equipment (e.g. CNC Lathes) iscuasing cascading delays.
 * **Resource Demand (Treemap):** Highlights the Material Workload Hours, demonstratiing which raw materials are consumuing the majority of total machine time.
 * **Interactive Global Slicers:** Allows floor managers to slice the data instantly by Date, Machine type, or Product Name.
+
+## Strategic Reccomendations
+* **Optimize Machine Load:** Re-assign upcoming jobs from heavily overbooked machines (highlighted in the matrix Heatmap) to machines currently sitting idle.
+* **Proactive Overtime:** Authorize targeted weekend overtime shifts for specific machine operators when scheduled hours vastly exceed the active daily capacity to prevent missed customer deadlines.
+* **Customer Communication:** Contact customers regarding orders flagged in the 'Delayed' status before the missed deadline occurs.
+
+ 
