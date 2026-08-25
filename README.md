@@ -39,6 +39,6 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 
 # Future Enhancements
 * ** Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order genration.
-* **Predictive Maintenance Forcast:** Implement a predictive Machine Lerning model with Pythion to forcast the probability of machine downtime based on Scheduled Hours and Active Daily Capacity.
+* **Predictive Maintenance Forecast:** Implement a predictive Machine Lerning model with Pythion to forcast the probability of machine downtime based on Scheduled Hours and Active Daily Capacity.
 * **Operator Shift Drilldown:** Further analyze machine operator shifts to observe correlations to delayed production statuses.
 * **Material Supply Chain Exploration:** Study vendor lead times and material costs for key compenents like Titanium Alloy and Corbon Steel to determine optimal purchasing schedules.
