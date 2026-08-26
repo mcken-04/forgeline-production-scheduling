@@ -1,4 +1,4 @@
-
+<img src="assets/forgeline_industries_logo.png" alt="Forgeline logo" width="125" height="75">
 
 # Business Requirements Document (BRD)
 **Company:** Forgeline Industries
