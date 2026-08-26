@@ -36,6 +36,7 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 
 ## Repository Structure
 ```text
+Forgeline-Production-Scheduling/
 |
 ├── Messy_Manufacturing_Data/
 |    ├── Order_Data/                                                # Folder of Orders datasets by month
