@@ -19,9 +19,13 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 
 ## Executive Dashboard
 
+![Production Scheduling Dashboard](assets/product_scheduling__data_analysis_dashboard.png)
+
 * **Forgeline Navy (#1E3A5F):** Used for primary, positive data points.
 * **Steel Gray (#4B5563):** Used for secondary categories and neutral labels.
 * **Forge Orange (#E85D04):** Reserved exclusively as an "alert" color to draw attention to delayed jobs and bottlenecks.
+
+![7 Day Schedule](7-day_schedule_screenshot.png)
 
 ## Dashboard Features and Key Business Insights
 * **Machine Scheduling Heatmap (Matrix):** Visually exposed overbooked equipment by using conditional formatting to highlight days where scheduled hours exceed physical machine capacity.
@@ -45,8 +49,8 @@ Forgeline-Production-Scheduling/
 |    └── Production_Schedule.xlsx                                   # Production Schedule dataset
 ├── assets/
 |    ├── 7-day_schedule_screenshot.png                              # Schedule heatmap screenshot
-|    ├── dashboard_screenshot.png                                   # Production Scheduling & Delay Analysis screenshot
-|    └── forgeline_industries.png                                   # Company Logo
+|    ├── forgeline_industries.png                                   # Company Logo
+|    └── product_scheduling__data_analysis_dashboard.png            # Production Scheduling & Delay Analysis screenshot
 ├── data_model_excel/
 |    └── Manufacturing_Data_Model.xlsx                              # Master Excel workbook with Power Query ETL and original Power Pivot Star Schema
 ├── power_bi/
