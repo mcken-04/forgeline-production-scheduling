@@ -1,3 +1,5 @@
+<img src="assets/forgeline_industries_logo.png" alt="Forgeline logo" width="125" height="75">
+
 # Forgeline Industries: Production Scheduling & Delay Analysis
 
 ## Executive Summary
