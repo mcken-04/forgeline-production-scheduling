@@ -5,7 +5,7 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 
 ## Methodology & Tech Stacks
 * **Data Generation (Python):** Simulated 5,000 synthetic , intentionally messy manufacturing orders using the `pandas` library, utilizing a locked random seed (42) to ensure strict reproducibility.
-* **Automated ETL Pipeline (Excel / Power Query):** Established a "drop and refresh" folder connection to automatically append monthly CSV/Excel batch files. Engineered tranformation steps to standardize mixed date formats, unify text casing, trim hidden whitespaces from Machine IDs, and impute missing quantities.
+* **Automated ETL Pipeline (Excel / Power Query):** Established a "drop and refresh" folder connection to automatically append monthly CSV/Excel batch files. Engineered transformation steps to standardize mixed date formats, unify text casing, trim hidden whitespaces from Machine IDs, and impute missing quantities.
 * **Data Modeling (Power BI):** Constructed a Star Schema featuring a dynamic `CALENDERAUTO()` Date table to properly handle time intelligence filtering.
 * **Advanced DAX Logic:** Deployed robust measures using variables `(VAR)`, `MAX`, and `LOOKUPVALUE` to bypass inactive relationships and handle duplicate Order IDs without breaking the visualizations.
 
@@ -35,7 +35,30 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 * **Customer Communication:** Contact customers regarding orders flagged in the 'Delayed' status before the missed deadline occurs.
 
 ## Repository Structure
-
+```text
+|
+├── Messy_Manufacturing_Data/
+|    ├── Order_Data/
+|    ├── Master_Machines.xlsx
+|    ├── Master_Products.xlsx
+|    └── Production_Schedule.xlsx
+├── assets/
+|    ├── 7-day_schedule_screenshot.png
+|    ├── dashboard_screenshot.png
+|    ├── forgeline_industries.png
+|    └── realtions_star_schema.png
+├── data_model_excel/
+|    └── Manufacturing_Data_Model.xlsx
+├── power_bi/
+|    ├── Production_Scheduling__Delay_Analysis.Report/
+|    ├── Production_Scheduling__Delay_Analysis.SemanticModel/
+|    ├── Production_Scheduling__Delay_Analysis.pbip
+|    └── Production_Scheduling__Delay_Analysis.pbix
+├── py_scripts/
+|    ├── data_generation.ipynb
+|    └── data_generation.py
+├── Bussiness_Requirments.md
+└── README.md
 
 # Future Enhancements
 * ** Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order generation.
