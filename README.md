@@ -38,28 +38,27 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 ```text
 |
 ├── Messy_Manufacturing_Data/
-|    ├── Order_Data/
-|    ├── Master_Machines.xlsx
-|    ├── Master_Products.xlsx
-|    └── Production_Schedule.xlsx
+|    ├── Order_Data/                                                # Folder of Orders datasets by month
+|    ├── Master_Machines.xlsx                                       # Machine dataset
+|    ├── Master_Products.xlsx                                       # Products dataset
+|    └── Production_Schedule.xlsx                                   # Production Schedule dataset
 ├── assets/
-|    ├── 7-day_schedule_screenshot.png
-|    ├── dashboard_screenshot.png
-|    ├── forgeline_industries.png
-|    └── realtions_star_schema.png
+|    ├── 7-day_schedule_screenshot.png                              # Schedule heatmap screenshot
+|    ├── dashboard_screenshot.png                                   # Production Scheduling & Delay Analysis screenshot
+|    └── forgeline_industries.png                                   # Company Logo
 ├── data_model_excel/
-|    └── Manufacturing_Data_Model.xlsx
+|    └── Manufacturing_Data_Model.xlsx                              # Master Excel workbook with Power Query ETL and original Power Pivot Star Schema
 ├── power_bi/
-|    ├── Production_Scheduling__Delay_Analysis.Report/
-|    ├── Production_Scheduling__Delay_Analysis.SemanticModel/
-|    ├── Production_Scheduling__Delay_Analysis.pbip
-|    └── Production_Scheduling__Delay_Analysis.pbix
+|    ├── Production_Scheduling__Delay_Analysis.Report/              # PBIP Report definition
+|    ├── Production_Scheduling__Delay_Analysis.SemanticModel/       # PBIP Data model
+|    ├── Production_Scheduling__Delay_Analysis.pbip                 # Power BI Project file
+|    └── Production_Scheduling__Delay_Analysis.pbix                 # Standard Power BI file
 ├── py_scripts/
-|    ├── data_generation.ipynb
-|    └── data_generation.py
-├── Bussiness_Requirments.md
+|    ├── data_generation.ipynb                                      # Jupyter Notebook for data generation
+|    └── data_generation.py                                         # Executable Python script
+├── Bussiness_Requirments.md                                        # Business Problem and Requirements for analysis
 └── README.md
-
+```
 # Future Enhancements
 * ** Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order generation.
 * **Predictive Maintenance Forecast:** Implement a predictive Machine Learning model with Pythion to forecast the probability of machine downtime based on Scheduled Hours and Active Daily Capacity.
