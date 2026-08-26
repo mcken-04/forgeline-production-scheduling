@@ -25,13 +25,14 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 * **Steel Gray (#4B5563):** Used for secondary categories and neutral labels.
 * **Forge Orange (#E85D04):** Reserved exclusively as an "alert" color to draw attention to delayed jobs and bottlenecks.
 
-![7 Day Schedule](7-day_schedule_screenshot.png)
-
 ## Dashboard Features and Key Business Insights
-* **Machine Scheduling Heatmap (Matrix):** Visually exposed overbooked equipment by using conditional formatting to highlight days where scheduled hours exceed physical machine capacity.
+* **Machine Scheduling Heatmap (Matrix):** Visually exposed overbooked equipment by using conditional formatting to highlight days where scheduled hours exceed physical machine capacity. The heatmap can also be tranformed to a 7-day schedule with the date slicer for a less congested matrix.
 * **Bottleneck Analysis (Cluster Bar Chart):** Breaks down Total Delayed Jobs by specific Machine Types, instantly showing if specific equipment (e.g. CNC Lathes) is causing cascading delays.
 * **Resource Demand (Tree Map):** Highlights the Material Workload Hours, demonstrating which raw materials are consuming the majority of total machine time.
 * **Interactive Global Slicers:** Allows floor managers to slice the data instantly by Date, Machine type, or Product Name.
+
+![7 Day Schedule](assets/7-day_schedule_screenshot.png)
+> Machine Scheduling Heatmap positioned to 7-day schedule for less congested view.
 
 ## Strategic Recommendations
 * **Optimize Machine Load:** Re-assign upcoming jobs from heavily overbooked machines (highlighted in the matrix Heatmap) to machines currently sitting idle.
