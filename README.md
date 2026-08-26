@@ -2,6 +2,19 @@
 
 # Forgeline Industries: Production Scheduling & Delay Analysis
 
+![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Power BI](https://img.shields.io/badge/PowerBI-F2C811?style=for-the-badge&logo=Power%20BI&logoColor=white)
+
+## Table of Contents
+- [Executive Summary](#executive-summary)
+- [Methodology & Tech Stacks](#methodology--tech-stacks)
+- [Key Metrics Tracked](#key-metrics-tracked)
+- [Executive Dashboard](#executive-dashboard)
+- [Strategic Recommendations](#strategic-recommendations)
+- [Repository Structure](#repository-structure)
+- [Future Enhancements](#future-enhancements)
+
 ## Executive Summary
 Forgeline Industries currently lacks real time visibility into the root causes of operational bottlenecks across its manufacturing floor. This project implements an automated, end-to-end pipeline and business intelligence dashboard to identify physical manufacturing delays and track machine utilization. By transitioning from scattered monthly batch files to a centralized command center, operations managers can now proactively monitor capacity limits, prevent scheduling cascades, and maintain customer delivery timelines.
 
