@@ -1,0 +1,31 @@
+relationship 1e822bd7-e57b-4f0d-9b8a-c9fb2cf0a256
+	fromColumn: Orders_Data.ProductID
+	toColumn: Master_Products.ProductID
+
+relationship 5fe48f0e-6e39-48d0-8e72-9e2c6bf3f7dd
+	fromColumn: Orders_Data.OrderID
+	toColumn: Production_Schedule.OrderID
+
+relationship 39958452-90b7-409d-b04f-434c453b3cd4
+	fromColumn: Production_Schedule.MachineID
+	toColumn: Master_Machines.MachineID
+
+relationship 0ad93e2d-3462-46f6-b640-675a6794d3f9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateTable.Date
+	toColumn: LocalDateTable_903f036c-6313-46b4-9a0d-14b78d13cea1.Date
+
+relationship b5e5b8e7-185a-e414-1958-dcb8383c1f40
+	isActive: false
+	fromColumn: Orders_Data.DueDate
+	toColumn: DateTable.Date
+
+relationship 11f52cb4-8181-ce0a-581c-2108bafb2520
+	fromColumn: Production_Schedule.'Production Date'
+	toColumn: DateTable.Date
+
+relationship 54ed8361-822f-41e1-8c17-0b3ad1e090c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateTable.'Week Start'
+	toColumn: LocalDateTable_f73dca80-549b-4672-ad7d-d23cfcdd3021.Date
+

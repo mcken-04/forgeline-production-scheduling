@@ -1,0 +1,45 @@
+table Master_Products
+	lineageTag: b4393599-974e-4753-a479-3a7da7abf1fa
+
+	column ProductID
+		dataType: string
+		lineageTag: 1e302eb7-b0b2-48e5-8679-fd2c0a294dfd
+		sourceColumn: ProductID
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ProductName
+		dataType: string
+		lineageTag: cbaa584e-43df-4c96-842e-9d8aadc47406
+		sourceColumn: ProductName
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column MaterialRequired
+		dataType: string
+		lineageTag: aa3d1e18-e835-47ea-9ad4-19752d74a177
+		sourceColumn: MaterialRequired
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column StandardBuildTime
+		dataType: double
+		lineageTag: e96e09cc-8e3a-48d7-a406-31f52620f652
+		sourceColumn: StandardBuildTime
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Master_Products = m
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\mcken\Projects\portfolio_project_8\Messy_Manufacturing_Data\Master_Products.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", type text}, {"ProductName", type text}, {"MaterialRequired", type text}, {"StandardBuildTime", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

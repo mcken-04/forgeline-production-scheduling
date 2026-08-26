@@ -1,0 +1,42 @@
+table DateTable
+	lineageTag: af53ee87-77e0-45b0-8f1c-5497ffb078dc
+
+	column Date
+		formatString: Short Date
+		lineageTag: 794a6c62-cc09-429e-b2c1-2f44ec3faf86
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 0ad93e2d-3462-46f6-b640-675a6794d3f9
+			defaultHierarchy: LocalDateTable_903f036c-6313-46b4-9a0d-14b78d13cea1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Week Start' = ```
+			
+			    DateTable[Date] - WEEKDAY(DateTable[Date], 2) +1
+			```
+		formatString: Short Date
+		lineageTag: 7d202fa0-f366-407f-af73-143290d6b771
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 54ed8361-822f-41e1-8c17-0b3ad1e090c9
+			defaultHierarchy: LocalDateTable_f73dca80-549b-4672-ad7d-d23cfcdd3021.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition DateTable = calculated
+		mode: import
+		source = CALENDARAUTO()
+
+	annotation PBI_Id = e5be611abd6e4ae2b3f46b878fa1f153
+

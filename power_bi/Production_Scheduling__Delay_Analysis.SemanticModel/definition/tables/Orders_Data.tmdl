@@ -1,0 +1,74 @@
+table Orders_Data
+	lineageTag: e333b2a2-09d9-4f9a-ae66-d8595cdf8906
+
+	measure 'Material Workload (Hours)' =
+			
+			SUMX(
+			    Orders_Data,
+			    Orders_Data[Quantity] * LOOKUPVALUE(Master_Products[StandardBuildTime], Master_Products[ProductID], Orders_Data[ProductID])
+			)
+		lineageTag: 9537e4e3-12de-4f83-8b53-0e74bef4bb68
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderID
+		dataType: string
+		lineageTag: bc3b0538-e183-4145-8c1b-d91dbbb8d200
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		lineageTag: ef34398a-bd7f-470b-bf3a-e26240c694fb
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: e0b020c0-7c3f-43cf-bfe5-15eb708e614c
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column DueDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c48734ff-07de-4ae9-9c0d-95e4c791a9e1
+		summarizeBy: none
+		sourceColumn: DueDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Orders_Data = m
+		source =
+				let
+				    Source = Folder.Files("C:\Users\mcken\Projects\portfolio_project_8\Messy_Manufacturing_Data\Orders_Data"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"OrderID", type text}, {"ProductID", type text}, {"Quantity", Int64.Type}, {"DueDate", type date}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Changed Type",{{"ProductID", Text.Upper, type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Uppercased Text",null,50,Replacer.ReplaceValue,{"Quantity"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"Source.Name"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

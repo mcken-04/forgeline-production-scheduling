@@ -1,0 +1,72 @@
+table Master_Machines
+	lineageTag: 6860f949-49eb-4e2d-92cb-7281280bdea1
+
+	measure 'Active Daily Capacity' = ```
+			
+			    CALCULATE(
+			        SUM(Master_Machines[DailyCapacityHours]),
+			        Master_Machines[Status] = "Active"
+			    )
+			```
+		formatString: 0
+		lineageTag: 6e8ef574-2a99-4499-9afd-2b0ac6e4119a
+
+	measure 'Machine Utilization %' = ```
+			
+			    DIVIDE(
+			        [Scheduled Hours],
+			        [Total Dynamic Capacity],
+			        0
+			    )
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fe2c4560-307f-4828-b65e-0fe589d602e4
+
+	measure 'Total Dynamic Capacity' =
+			
+			[Active Daily Capacity] * COUNTROWS('DateTable')
+		formatString: 0.0
+		lineageTag: 019fce76-190b-4d5a-ba74-1a224d687779
+
+	column MachineID
+		dataType: string
+		lineageTag: 0cfef9f2-e2df-4a53-8637-4c9a2d0dd020
+		sourceColumn: MachineID
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column MachineType
+		dataType: string
+		lineageTag: 8ff23bc0-8b0c-46a1-8130-84cb9bee735a
+		sourceColumn: MachineType
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DailyCapacityHours
+		dataType: int64
+		lineageTag: 6ce6433e-3891-4f0b-94aa-ec4e522717e6
+		sourceColumn: DailyCapacityHours
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: string
+		lineageTag: a7cac693-8600-4e14-8c12-f112a29a4bb1
+		sourceColumn: Status
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition Master_Machines = m
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\mcken\Projects\portfolio_project_8\Messy_Manufacturing_Data\Master_Machines.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MachineID", type text}, {"MachineType", type text}, {"DailyCapacityHours", Int64.Type}, {"Status", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

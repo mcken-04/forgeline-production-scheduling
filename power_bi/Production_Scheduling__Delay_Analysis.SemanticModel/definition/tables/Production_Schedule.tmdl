@@ -1,0 +1,123 @@
+table Production_Schedule
+	lineageTag: 3b0e295b-817a-4cd7-b86d-9ca56c692af1
+
+	measure 'Scheduled Hours' = ```
+			
+			    SUMX(
+			        Production_Schedule,
+			        DATEDIFF(Production_Schedule[StartTime],Production_Schedule[EndTime], MINUTE) / 60.0
+			    )
+			```
+		lineageTag: bc57af20-4053-43e4-bed9-858ff9cc3e13
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Delayed Jobs' = ```
+			
+			    CALCULATE(
+			        COUNTROWS(Production_Schedule),
+			        Production_Schedule[Production Status] = "Delayed"
+			    )
+			```
+		formatString: 0
+		lineageTag: c19a7237-428f-4bae-86d6-fe5d0ba85ea4
+
+	column ScheduleID
+		dataType: string
+		lineageTag: 2a408e68-22c9-45ad-957a-8cf6bbe7cd7e
+		summarizeBy: none
+		sourceColumn: ScheduleID
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderID
+		dataType: string
+		lineageTag: ad0ef1ac-9bad-4ffd-9a59-6daee0398dd1
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineID
+		dataType: string
+		lineageTag: 578a0a5b-d09c-48e0-92c7-016ea3e15c4b
+		summarizeBy: none
+		sourceColumn: MachineID
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3b33b7f6-db34-4f30-b253-399b087f77dd
+		summarizeBy: none
+		sourceColumn: StartTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f081deef-a5f4-4be8-847b-32fdacff66a5
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production Date' = ```
+			
+			    DATEVALUE(Production_Schedule[StartTime])
+			```
+		formatString: Long Date
+		lineageTag: 842730e8-4712-4f79-8578-58b300b79e75
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Production Status' = ```
+			
+			VAR CurrentOrder = Production_Schedule[OrderID]
+			VAR OrderDueDate = CALCULATE(MAX(Orders_Data[DueDate]), Orders_Data[OrderID] = CurrentOrder)
+			
+			RETURN
+			IF(
+			    ISBLANK(Production_Schedule[EndTime]), 
+			    "In Progress",
+			    IF(
+			        DATEVALUE(Production_Schedule[EndTime]) > OrderDueDate, 
+			        "Delayed", 
+			        "On Time"
+			    )
+			)
+			```
+		lineageTag: e6bf62c7-bee3-4c77-a909-7594f73be2ac
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Production_Schedule = m
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\mcken\Projects\portfolio_project_8\Messy_Manufacturing_Data\Production_Schedule.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ScheduleID", type text}, {"OrderID", type text}, {"MachineID", type text}, {"StartTime", type datetime}, {"EndTime", type datetime}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"MachineID", Text.Trim, type text}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Trimmed Text",{{"StartTime", type datetime}, {"EndTime", type datetime}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

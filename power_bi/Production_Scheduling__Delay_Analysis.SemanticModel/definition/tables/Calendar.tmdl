@@ -1,0 +1,116 @@
+table Calendar
+	isHidden
+	lineageTag: 9e548f46-17dd-48d0-8c81-f6268c2308d6
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isHidden
+		isKey
+		formatString: General Date
+		lineageTag: cd5b77e0-c4e2-4a6c-b718-1240b6d191f5
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR([Date])
+		isHidden
+		lineageTag: be3bc313-f8ba-4f63-9f79-596ff29a0837
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number' = MONTH([Date])
+		isHidden
+		lineageTag: c831589d-1bdc-41ea-a9cd-75296d72a864
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT([Date],"MMMM")
+		isHidden
+		lineageTag: 2ac2742d-467c-439e-8df9-5cdcccc0b12f
+		summarizeBy: none
+		sortByColumn: 'Month Number'
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column MMM-YYYY = FORMAT([Date],"MMM-YYYY")
+		isHidden
+		lineageTag: 95aee958-ea1d-4195-b034-f9a49e8a23b8
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Of Week Number' = WEEKDAY([Date])
+		isHidden
+		lineageTag: ef01c5da-ff9e-44e3-8dd8-48a87a111c5c
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Of Week' = FORMAT([Date],"DDDD")
+		isHidden
+		lineageTag: f727e910-c499-4297-8307-ecd7b5458754
+		summarizeBy: none
+		sortByColumn: 'Day Of Week Number'
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isText":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Date Hierarchy'
+		isHidden
+		lineageTag: 314cd159-0258-4ddd-95eb-5c2b28ff9bd2
+
+		level Year
+			lineageTag: f59a7a79-c992-4b86-8477-e37b3da5ce70
+			column: Year
+
+		level Month
+			lineageTag: fa08d265-3956-4076-b7a2-5e103ec8cd18
+			column: Month
+
+		level DateColumn
+			lineageTag: 27e545dc-9e19-4668-8826-8f768e23d0ab
+			column: Date
+
+		changedProperty = IsHidden
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fdmxbRwwDIbRVQLXASKSEiWlywCZIPD+ayTu8wS4U3X0/+6K78+fj/gRP3Jkf4v8Oca/v2+/fn98fv96SD2UHqYelh5aD1sPRw9XDzH4ws8e/PDBTx/8+MHPHzxA8ALBEwRvkLxB+v/PGyRvkLxB8gbJGyRvkLxB8gbFGxRukMKRwpHCkcKRwpHCkcKRwpHCkcSRxJHEkcSRxJHEkcSRxJHEkcSRxJHEkcSRxJHEkcSRxJHEkcRRmnNpzqU5l+ZcmnNpzqU5l+ZcmnNxzsU5F+dcnHNxzsU5F+dcnHNxzsU5F+dcnHNxzsU5F+dcnHNxzsU512PO+q4vftcXv+uncEzhmMIxhWMKxxSOKRxTOKZwTOKYxDGJYxLHJI5JHJM4JnFM4pjEMYljEsckjkkckzgmcUzimMQxiWMSxySOJQJLBJYILBFYIrBEYInAEoElAosEFgksElgksEhgkcAigUUCiwQWCSwSWCSwSGCRwCKBRQKLBBYJLBJYJLAeBPT70MLRwtHC0cLRwtHC0cLRwtHC0cTRxNHE0cTRxNHE0cTRxNHE0cTRxNHE0cTRxNHE0cTRxNHE0cTRxNHEsUVgi8AWgS0CWwS2CGwR2CKwRWCTwCaBTQKbBDYJbBLYJLBJYJPAJoFNApsENglsEtgksElgk8AmgU0CmwT2g4B+H45wHOE4wnGE4wjHEY4jHEc4jnAc4jjEcYjjEMchjkMchzgOcRziOMRxiOMQxyGOQxyHOA5xHOI4xHGI4xDHIY5DHFc4rnBc4bjCcYXjCscVjiscVzgucVziuMRxieMSxyWOSxyXOC5xXOK4xHGJ4xLHJY5LHJc4LnFc4rjEcYnjujIMlrbB1DbY2gZj22BtG8xtg71tMLgNFrfh5Dbc3Iaj23B1G85uw91tOLwNl7fh9Dbc3gZZfD09NuFrsL8NB7jhAjec4IYb3HCEG65w4wVEPx/hSu1M7U7tUO1S7VTtVu1Y7Vr9yNWPXv0I1o9i/UjWj2b9iNaPav3I1o9u/QjXj3L9SNePdv2I1496/cjXj379CNiPgv1I2CzVwVQdbNXBWB2s1cFcHezVwWAdLNbhZB1u1uFoHa7W4Wwd7tbhcB0u1+F0HW7X4XgdrtfhfB3u1+GAHS7Y4YQdbtjhiP315Gs8gPz3x+XzLw==", BinaryEncoding.Base64), Compression.Deflate))),
+				    #"Renamed Columns" = Table.RenameColumns(Source, {{"Column1", "Date"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"Date", type datetime}})
+				 in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+

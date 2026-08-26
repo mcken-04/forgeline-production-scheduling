@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transform File from Orders_Data'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transform File from Orders_Data\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Master_Machines","Master_Products","Production_Schedule","Orders_Data","Parameter1","Transform Sample File","Sample File","Transform File","Calendar"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Orders_Data
+ref table Master_Machines
+ref table Master_Products
+ref table Production_Schedule
+ref table Calendar
+ref table DateTable
+ref table DateTableTemplate_8a07794e-f445-44dd-8634-430384ed8f39
+ref table LocalDateTable_903f036c-6313-46b4-9a0d-14b78d13cea1
+ref table LocalDateTable_f73dca80-549b-4672-ad7d-d23cfcdd3021
+
+ref cultureInfo en-US
+
