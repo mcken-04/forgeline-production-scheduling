@@ -61,7 +61,7 @@ Forgeline-Production-Scheduling/
 └── README.md
 ```
 # Future Enhancements
-* ** Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order generation.
+* **Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order generation.
 * **Predictive Maintenance Forecast:** Implement a predictive Machine Learning model with Pythion to forecast the probability of machine downtime based on Scheduled Hours and Active Daily Capacity.
 * **Operator Shift Drilldown:** Further analyze machine operator shifts to observe correlations to delayed production statuses.
 * **Material Supply Chain Exploration:** Study vendor lead times and material costs for key components like Titanium Alloy and Carbon Steel to determine optimal purchasing schedules.
