@@ -5,9 +5,9 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 
 ## Methodology & Tech Stacks
 * **Data Generation (Python):** Simulated 5,000 synthetic , intentionally messy manufacturing orders using the `pandas` library, utilizing a locked random seed (42) to ensure strict reproducibility.
-* **Automated ETL Pipeline (Excel / Power Query):** Established a "dropo and refresh" folder connection to automatically append monthly CSV/Excel batch files. Engineered tranformation steps to standardize mixed date formats, unify text casing, trim hidden whitespaces from Machine IDs, and impute missing quantities.
+* **Automated ETL Pipeline (Excel / Power Query):** Established a "drop and refresh" folder connection to automatically append monthly CSV/Excel batch files. Engineered tranformation steps to standardize mixed date formats, unify text casing, trim hidden whitespaces from Machine IDs, and impute missing quantities.
 * **Data Modeling (Power BI):** Constructed a Star Schema featuring a dynamic `CALENDERAUTO()` Date table to properly handle time intelligence filtering.
-* **Advacned DAX Logic:** Deployed robust measures using variables `(VAR)`, `MAX`, and `LOOKUPVALUE` to bypass inactive relationships and handle dupicate Order IDs without breaking the visualizations.
+* **Advanced DAX Logic:** Deployed robust measures using variables `(VAR)`, `MAX`, and `LOOKUPVALUE` to bypass inactive relationships and handle duplicate Order IDs without breaking the visualizations.
 
 ## Key Metrics Tracked
 | **Matric** | **Business Value** |
@@ -24,12 +24,12 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 * **Forge Orange (#E85D04):** Reserved exclusively as an "alert" color to draw attention to delayed jobs and bottlenecks.
 
 ## Dashboard Features and Key Business Insights
-* **Machine Scheduling Heatmap (Matrix):** Visally exposed overebooked equipment by using conditional formatting to highlight days where scheduled hours exceed physical machine capacity.
-* **Bottleneck Analysis (Clusted Bar Chart):** Breaks down Total Delayed Jobs by specific Machine Types, instantly showing if spcific equipment (e.g. CNC Lathes) iscuasing cascading delays.
-* **Resource Demand (Treemap):** Highlights the Material Workload Hours, demonstratiing which raw materials are consumuing the majority of total machine time.
+* **Machine Scheduling Heatmap (Matrix):** Visually exposed overbooked equipment by using conditional formatting to highlight days where scheduled hours exceed physical machine capacity.
+* **Bottleneck Analysis (Cluster Bar Chart):** Breaks down Total Delayed Jobs by specific Machine Types, instantly showing if specific equipment (e.g. CNC Lathes) is causing cascading delays.
+* **Resource Demand (Tree Map):** Highlights the Material Workload Hours, demonstrating which raw materials are consuming the majority of total machine time.
 * **Interactive Global Slicers:** Allows floor managers to slice the data instantly by Date, Machine type, or Product Name.
 
-## Strategic Reccomendations
+## Strategic Recommendations
 * **Optimize Machine Load:** Re-assign upcoming jobs from heavily overbooked machines (highlighted in the matrix Heatmap) to machines currently sitting idle.
 * **Proactive Overtime:** Authorize targeted weekend overtime shifts for specific machine operators when scheduled hours vastly exceed the active daily capacity to prevent missed customer deadlines.
 * **Customer Communication:** Contact customers regarding orders flagged in the 'Delayed' status before the missed deadline occurs.
@@ -38,7 +38,7 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 
 
 # Future Enhancements
-* ** Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order genration.
-* **Predictive Maintenance Forecast:** Implement a predictive Machine Lerning model with Pythion to forcast the probability of machine downtime based on Scheduled Hours and Active Daily Capacity.
+* ** Live ERP Integration:** Integrate a live REST API with Python to replace the synthetic manufacturing order generation.
+* **Predictive Maintenance Forecast:** Implement a predictive Machine Learning model with Pythion to forecast the probability of machine downtime based on Scheduled Hours and Active Daily Capacity.
 * **Operator Shift Drilldown:** Further analyze machine operator shifts to observe correlations to delayed production statuses.
-* **Material Supply Chain Exploration:** Study vendor lead times and material costs for key compenents like Titanium Alloy and Corbon Steel to determine optimal purchasing schedules.
+* **Material Supply Chain Exploration:** Study vendor lead times and material costs for key components like Titanium Alloy and Carbon Steel to determine optimal purchasing schedules.
