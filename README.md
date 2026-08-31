@@ -21,7 +21,7 @@ Forgeline Industries currently lacks real time visibility into the root causes o
 > **View the full formal Business Requirements Document (BRD) [here](Business-Requirements-Document.md)**
 
 ## Methodology & Tech Stacks
-* **Data Generation (Python):** Simulated 5,000 synthetic , intentionally messy manufacturing orders using the `pandas` library, utilizing a locked random seed (42) to ensure strict reproducibility.
+* **Data Generation (Python):** Simulated 5,000 synthetic, intentionally messy manufacturing orders using the `pandas` library, utilizing a locked random seed (42) to ensure strict reproducibility.
 * **Automated ETL Pipeline (Excel / Power Query):** Established a "drop and refresh" folder connection to automatically append monthly CSV/Excel batch files. Engineered transformation steps to standardize mixed date formats, unify text casing, trim hidden whitespaces from Machine IDs, and impute missing quantities.
 * **Data Modeling (Power BI):** Constructed a Star Schema featuring a dynamic `CALENDERAUTO()` Date table to properly handle time intelligence filtering.
 * **Advanced DAX Logic:** Deployed robust measures using variables `(VAR)`, `MAX`, and `LOOKUPVALUE` to bypass inactive relationships and handle duplicate Order IDs without breaking the visualizations.
